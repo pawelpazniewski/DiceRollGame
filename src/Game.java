@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Game {
     private Player player;
     private Player opponent;
@@ -5,15 +7,21 @@ public class Game {
     private static int numOfGames;
     private static int tied;
 
-    public Game (int games){
+    public Game (){
         player = new Player();
         opponent = new Player();
-        numOfGames = games;
         tied = 0;
+        getNumOfGamesFromUser();
 
         play();
         displayResults(player.getWin(),opponent.getWin());
 
+    }
+    public int getNumOfGamesFromUser(){
+        System.out.println("How many games do you want to simulate?");
+        Scanner scanner = new Scanner(System.in);
+        numOfGames = scanner.nextInt();
+        return numOfGames;
     }
     public void play (){
         for (int i = 0; i <numOfGames; i++){
